@@ -19,7 +19,7 @@ function CustomForm() {
   const [formData, setFormData] = useState(initData);
   const [showDialog, setShowDialog] = useState(false);
   const [error, setError] = useState("");
-
+  const [reqError, setReqError] = useState();
 
   const handelSendEmail = () => {
     emailjs
@@ -31,10 +31,14 @@ function CustomForm() {
       )
       .then(
         () => {
+          setShowDialog(true);
+          setFormData(initData);
           console.log("success!");
         },
         (e) => {
+          setShowDialog(false);
           console.log(e.text);
+          setReqError(`something wrong happened, please try again`);
         }
       );
   };
@@ -60,8 +64,8 @@ function CustomForm() {
     } else {
       setError(""); // Clear any previous error messages
       handelSendEmail();
-      setFormData(initData);
-      setShowDialog(true);
+      // reqError ? setShowDialog(false) : setShowDialog(true);
+      // setFormData(initData);
       console.log(formData);
 
       // console.log("Form submitted:", formData);
@@ -218,6 +222,7 @@ function CustomForm() {
         </div>
 
         {/* Submit Button */}
+        {reqError ? <p className="p__error">{reqError}</p> : ""}
         <button className="btn" type="submit">
           Submit
         </button>
