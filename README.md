@@ -20,4 +20,9 @@ We welcome contributions to this project! To contribute:
 1. **Fork the Repository**: Click on the "Fork" button at the top right of this repository page.
 2. **Clone Your Fork**: Clone your fork to your local machine.
 
+## Try it out
+[Try it](https://aou-registration-page.netlify.app/) 
+
+
+
 
